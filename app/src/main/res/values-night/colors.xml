@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#6385FF</color>
+    <color name="color_primary_variant">#334FB4</color>
+    <color name="color_on_primary">#EDEFF4</color>
+    <color name="color_secondary">#E1C772</color>
+    <color name="color_secondary_variant">#C2A43E</color>
+    <color name="color_on_secondary">#393939</color>
+    <color name="color_background">#2E2E2E</color>
+    <color name="color_error">#E06C6C</color>
+    <color name="color_text_hint">#AFAFAF</color>
+    <color name="color_text_title">#C3C3C3</color>
+    <color name="color_text_subtitle">#BDBDBD</color>
+    <color name="color_card_background">#242424</color>
+</resources>

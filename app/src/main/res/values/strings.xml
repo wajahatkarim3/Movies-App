@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MoviesSwvl</string>
+    <string name="no_movies_found_str">No Movies Found!</string>
+    <string name="search_movies_str">Search movies...</string>
+    <string name="movie_details_str">Movie Details</string>
+    <string name="genres_str">Genres</string>
+    <string name="actors_str">Actors</string>
+    <string name="pictures_str">Pictures</string>
 </resources>
