@@ -14,26 +14,21 @@
         android:padding="20dp"
         android:background="?attr/colorPrimary">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputSearch"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:startIconDrawable="@drawable/ic_baseline_search_24"
-            app:startIconTint="@color/color_text_hint"
+            android:padding="10dp"
+            android:textColor="?attr/colorSecondary"
+            android:background="?attr/colorPrimaryVariant"
             android:hint="@string/search_movies_str"
-            app:boxBackgroundColor="?attr/colorPrimaryVariant"
-            android:textColorHint="@color/color_text_hint">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtSearch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="?attr/colorSecondary"
-                android:lines="1"
-                android:imeOptions="actionSearch"
-                android:inputType="text" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:textColorHint="@color/color_text_hint"
+            android:drawableStart="@drawable/ic_baseline_search_24"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/color_text_hint"
+            android:lines="1"
+            android:imeOptions="actionSearch"
+            android:inputType="text" />
 
     </FrameLayout>
 

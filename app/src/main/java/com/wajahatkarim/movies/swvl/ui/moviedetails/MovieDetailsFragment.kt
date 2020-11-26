@@ -7,26 +7,26 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.wajahatkarim.movies.swvl.R
+import com.wajahatkarim.movies.swvl.base.BaseFragment
+import com.wajahatkarim.movies.swvl.databinding.MovieDetailsFragmentBinding
 
-class MovieDetailsFragment : Fragment() {
+class MovieDetailsFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = MovieDetailsFragment()
     }
 
     private lateinit var viewModel: MovieDetailsViewModel
+    private lateinit var bi: MovieDetailsFragmentBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.movie_details_fragment, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        bi = MovieDetailsFragmentBinding.inflate(inflater, container, false)
+        return bi.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MovieDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }
