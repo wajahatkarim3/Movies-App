@@ -2,10 +2,7 @@ package com.wajahatkarim.movies.swvl.di.components
 
 import android.app.Application
 import com.wajahatkarim.movies.swvl.SwvlApp
-import com.wajahatkarim.movies.swvl.di.modules.ActivityModule
-import com.wajahatkarim.movies.swvl.di.modules.FragmentModule
-import com.wajahatkarim.movies.swvl.di.modules.ViewModelModule
-import com.wajahatkarim.movies.swvl.di.modules.ViewModelsFactoryModule
+import com.wajahatkarim.movies.swvl.di.modules.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -19,7 +16,8 @@ import javax.inject.Singleton
         ActivityModule::class,
         FragmentModule::class,
         ViewModelsFactoryModule::class,
-        ViewModelModule::class
+        ViewModelModule::class,
+        PreferencesModule::class
     ]
 )
 interface AppComponent : AndroidInjector<SwvlApp> {
