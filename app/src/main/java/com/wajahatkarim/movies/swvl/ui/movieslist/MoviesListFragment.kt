@@ -26,7 +26,7 @@ class MoviesListFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MoviesListViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelProvider).get(MoviesListViewModel::class.java)
     }
 
 }

@@ -6,6 +6,7 @@ buildscript {
         nav_version = "2.3.1"
         lifecycle_version = "2.2.0"
         arch_version = "2.1.0"
+        dagger_version = "2.30.1"
     }
     repositories {
         google()

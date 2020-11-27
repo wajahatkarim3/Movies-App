@@ -28,7 +28,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
         setupActionBarWithNavController(navController)
     }
 
-    override fun getViewModel(): MainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+    override fun getViewModel(): MainViewModel = ViewModelProvider(this, viewModelProvider).get(MainViewModel::class.java)
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
