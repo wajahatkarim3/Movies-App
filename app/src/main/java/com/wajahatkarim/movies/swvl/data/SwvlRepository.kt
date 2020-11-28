@@ -1,8 +1,15 @@
 package com.wajahatkarim.movies.swvl.data
 
 import android.content.SharedPreferences
+import com.google.gson.Gson
 import com.wajahatkarim.movies.swvl.AppConstants
+import com.wajahatkarim.movies.swvl.data.local.assets.AssetMoviesResponse
+import com.wajahatkarim.movies.swvl.data.local.database.MoviesDao
+import com.wajahatkarim.movies.swvl.model.MovieModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -12,8 +19,20 @@ import javax.inject.Singleton
 @ExperimentalCoroutinesApi
 @Singleton
 class SwvlRepository @Inject constructor(
-    private val preferences: SharedPreferences
+    private val preferences: SharedPreferences,
+    private val moviesDao: MoviesDao
 ) {
+    suspend fun saveAssetMoviesInDatabase(moviesStr: String) {
+        var gson = Gson()
+        var assetsMoviesResponse = gson.fromJson(moviesStr, AssetMoviesResponse::class.java)
+        assetsMoviesResponse.movies?.let { movies ->
+            moviesDao.insertMovies(movies)
+
+            // Save in Preferences that movies are stored
+            setMoviesInDatabase(true)
+        }
+    }
+
     fun areMoviesInDatabase(): Boolean {
         return preferences.getBoolean(AppConstants.PREF_KEYS.MOVIES_IN_DATABASE, false)
     }

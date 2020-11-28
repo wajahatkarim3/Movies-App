@@ -17,7 +17,8 @@ import javax.inject.Singleton
         FragmentModule::class,
         ViewModelsFactoryModule::class,
         ViewModelModule::class,
-        PreferencesModule::class
+        PreferencesModule::class,
+        DatabaseModule::class
     ]
 )
 interface AppComponent : AndroidInjector<SwvlApp> {

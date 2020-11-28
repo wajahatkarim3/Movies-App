@@ -18,6 +18,10 @@ class MoviesListViewModel @Inject constructor(private val repository: SwvlReposi
     val uiStateLiveData: LiveData<MoviesListUiState> = _uiState
 
     fun init() {
+        loadMovies()
+    }
+
+    fun loadMovies() {
         if (repository.areMoviesInDatabase()) {
 
         } else {
@@ -31,7 +35,8 @@ class MoviesListViewModel @Inject constructor(private val repository: SwvlReposi
         viewModelScope.launch(Dispatchers.IO) {
             var moviesStr = inputStream.readAsString()
             if (moviesStr != null) {
-                _uiState.postValue(ContentState)
+                repository.saveAssetMoviesInDatabase(moviesStr)
+                loadMovies()
             } else {
                 _uiState.postValue(ErrorState("Couldn't read Assets"))
             }
