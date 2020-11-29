@@ -77,10 +77,15 @@ dependencies {
 
     // Third-Parties
     implementation 'com.wajahatkarim3:roomexplorer:0.0.2'
+    implementation 'com.github.gurleensethi:LiteUtilities:v1.3.0'
 
     // Testing
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.12'
     testImplementation "androidx.room:room-testing:$room_version"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

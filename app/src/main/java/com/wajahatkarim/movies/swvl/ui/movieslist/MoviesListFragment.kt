@@ -6,10 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.thetechnocafe.gurleensethi.liteutils.RecyclerAdapterUtil
 import com.wajahatkarim.movies.swvl.R
 import com.wajahatkarim.movies.swvl.base.BaseFragment
+import com.wajahatkarim.movies.swvl.databinding.ItemMovieLayoutBinding
 import com.wajahatkarim.movies.swvl.databinding.MoviesListFragmentBinding
+import com.wajahatkarim.movies.swvl.model.MovieModel
 import com.wajahatkarim.movies.swvl.utils.gone
 import com.wajahatkarim.movies.swvl.utils.visible
 
@@ -21,6 +25,8 @@ class MoviesListFragment : BaseFragment() {
 
     private lateinit var viewModel: MoviesListViewModel
     private lateinit var bi: MoviesListFragmentBinding
+    private lateinit var recyclerAdapter: RecyclerAdapterUtil<MovieModel>
+    val moviesList = arrayListOf<MovieModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         bi = MoviesListFragmentBinding.inflate(inflater, container, false)
@@ -37,7 +43,21 @@ class MoviesListFragment : BaseFragment() {
     }
 
     fun setupViews() {
+        context?.let {
+            // RecyclerView
+            recyclerAdapter = RecyclerAdapterUtil(it, moviesList, R.layout.item_movie_layout)
+            recyclerAdapter.addOnDataBindListener { itemView, item, position, _ ->
+                var itemBinding = ItemMovieLayoutBinding.bind(itemView)
+                itemBinding.txtName.text = item.title
+                itemBinding.txtRelease.text = "${item.year}"
+                itemBinding.txtRating.text = "${item.rating}"
+            }
+            recyclerAdapter.addOnClickListener { item, position ->
 
+            }
+            bi.recyclerMovies.layoutManager = LinearLayoutManager(it, LinearLayoutManager.VERTICAL, false)
+            bi.recyclerMovies.adapter = recyclerAdapter
+        }
     }
 
     fun initObservations() {
@@ -63,6 +83,15 @@ class MoviesListFragment : BaseFragment() {
                     }
                 }
 
+                is EmptyState -> {
+                    bi.apply {
+                        recyclerMovies.gone()
+                        txtError.visible()
+                        txtError.text = getString(R.string.no_movies_found_str)
+                        progressBar.gone()
+                    }
+                }
+
                 is ErrorState -> {
                     bi.apply {
                         recyclerMovies.gone()
@@ -72,6 +101,12 @@ class MoviesListFragment : BaseFragment() {
                     }
                 }
             }
+        }
+
+        viewModel.moviesList.observe(viewLifecycleOwner) { movies ->
+            moviesList.clear()
+            moviesList.addAll(movies)
+            recyclerAdapter.notifyDataSetChanged()
         }
     }
 }

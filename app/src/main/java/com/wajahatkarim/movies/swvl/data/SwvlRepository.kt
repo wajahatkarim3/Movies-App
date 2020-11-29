@@ -6,10 +6,10 @@ import com.wajahatkarim.movies.swvl.AppConstants
 import com.wajahatkarim.movies.swvl.data.local.assets.AssetMoviesResponse
 import com.wajahatkarim.movies.swvl.data.local.database.MoviesDao
 import com.wajahatkarim.movies.swvl.model.MovieModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -32,6 +32,8 @@ class SwvlRepository @Inject constructor(
             setMoviesInDatabase(true)
         }
     }
+
+    fun getAllMoviesFromDatabase(): Flow<List<MovieModel>> = moviesDao.getAllMovies().flowOn(Dispatchers.IO)
 
     fun areMoviesInDatabase(): Boolean {
         return preferences.getBoolean(AppConstants.PREF_KEYS.MOVIES_IN_DATABASE, false)
