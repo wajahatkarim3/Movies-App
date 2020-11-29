@@ -11,12 +11,16 @@
         android:label="Decade of Movies"
         tools:layout="@layout/movies_list_fragment">
         <action
-            android:id="@+id/action_moviesListFragment_to_movieDetailsFragment"
-            app:destination="@id/movieDetailsFragment" />
+            android:id="@+id/action_movies_to_movies_details"
+            app:destination="@id/movieDetailsFragment"></action>
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.wajahatkarim.movies.swvl.ui.moviedetails.MovieDetailsFragment"
         android:label="Movie Details"
-        tools:layout="@layout/movie_details_fragment" />
+        tools:layout="@layout/movie_details_fragment">
+        <argument
+            android:name="movie"
+            app:argType="com.wajahatkarim.movies.swvl.model.MovieModel" />
+    </fragment>
 </navigation>

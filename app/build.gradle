@@ -2,8 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
 }
-apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 30
@@ -17,6 +17,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'FLICKER_API_KEY', "\"7083c57a58b348f43f3582b5ffa610a9\""
     }
 
     buildTypes {
@@ -31,6 +33,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    androidExtensions {
+        features = ["parcelize"]
     }
 
     buildFeatures {
@@ -75,9 +81,15 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+
     // Third-Parties
     implementation 'com.wajahatkarim3:roomexplorer:0.0.2'
     implementation 'com.github.gurleensethi:LiteUtilities:v1.3.0'
+    implementation "io.coil-kt:coil:1.1.0"
 
     // Testing
     testImplementation 'junit:junit:4.12'

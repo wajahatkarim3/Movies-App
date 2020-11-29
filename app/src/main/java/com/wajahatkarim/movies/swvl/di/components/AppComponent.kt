@@ -18,7 +18,8 @@ import javax.inject.Singleton
         ViewModelsFactoryModule::class,
         ViewModelModule::class,
         PreferencesModule::class,
-        DatabaseModule::class
+        DatabaseModule::class,
+        FlickerApiModule::class
     ]
 )
 interface AppComponent : AndroidInjector<SwvlApp> {

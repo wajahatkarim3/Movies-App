@@ -7,6 +7,7 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.whenever
 import com.wajahatkarim.movies.swvl.data.SwvlRepository
 import com.wajahatkarim.movies.swvl.data.local.database.MoviesDao
+import com.wajahatkarim.movies.swvl.data.remote.FlickerApiService
 import com.wajahatkarim.movies.swvl.util.DummyData
 import com.wajahatkarim.movies.swvl.util.TestCoroutineRule
 import kotlinx.coroutines.Dispatchers
@@ -38,6 +39,9 @@ class MoviesListViewModelTest {
 
     @Mock
     lateinit var dao: MoviesDao
+
+    @Mock
+    lateinit var apiService: FlickerApiService
 
     @Mock
     lateinit var uiStateObserver: Observer<MoviesListUiState>

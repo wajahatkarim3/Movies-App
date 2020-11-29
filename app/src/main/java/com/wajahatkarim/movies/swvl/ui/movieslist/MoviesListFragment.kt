@@ -4,16 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.thetechnocafe.gurleensethi.liteutils.RecyclerAdapterUtil
+import com.wajahatkarim.movies.swvl.MainActivity
 import com.wajahatkarim.movies.swvl.R
 import com.wajahatkarim.movies.swvl.base.BaseFragment
 import com.wajahatkarim.movies.swvl.databinding.ItemMovieLayoutBinding
 import com.wajahatkarim.movies.swvl.databinding.MoviesListFragmentBinding
 import com.wajahatkarim.movies.swvl.model.MovieModel
+import com.wajahatkarim.movies.swvl.ui.moviedetails.MovieDetailsFragment
 import com.wajahatkarim.movies.swvl.utils.gone
 import com.wajahatkarim.movies.swvl.utils.visible
 
@@ -53,7 +56,8 @@ class MoviesListFragment : BaseFragment() {
                 itemBinding.txtRating.text = "${item.rating}"
             }
             recyclerAdapter.addOnClickListener { item, position ->
-
+                var bundle = bundleOf("movie" to item)
+                (requireActivity() as MainActivity).navController.navigate(R.id.action_movies_to_movies_details, bundle)
             }
             bi.recyclerMovies.layoutManager = LinearLayoutManager(it, LinearLayoutManager.VERTICAL, false)
             bi.recyclerMovies.adapter = recyclerAdapter
