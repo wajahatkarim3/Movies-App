@@ -1,10 +1,12 @@
 package com.wajahatkarim.movies.swvl.ui.movieslist
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,6 +56,17 @@ class MoviesListFragment : BaseFragment() {
                 itemBinding.txtName.text = item.title
                 itemBinding.txtRelease.text = "${item.year}"
                 itemBinding.txtRating.text = "${item.rating}"
+                itemBinding.txtYearHeader.text = "${item.year}"
+
+                if (bi.txtSearch.text.toString().isEmpty())
+                    itemBinding.txtYearHeader.gone()
+                else {
+                    if (position == 0)
+                        itemBinding.txtYearHeader.visible()
+                    else if (item.year != moviesList[position-1].year)
+                        itemBinding.txtYearHeader.visible()
+                    else itemBinding.txtYearHeader.gone()
+                }
             }
             recyclerAdapter.addOnClickListener { item, position ->
                 var bundle = bundleOf("movie" to item)
@@ -61,6 +74,15 @@ class MoviesListFragment : BaseFragment() {
             }
             bi.recyclerMovies.layoutManager = LinearLayoutManager(it, LinearLayoutManager.VERTICAL, false)
             bi.recyclerMovies.adapter = recyclerAdapter
+        }
+
+        // Search Text
+        bi.txtSearch.addTextChangedListener { text ->
+            if (text.isNullOrEmpty()) {
+                viewModel.loadMovies()
+            } else {
+                viewModel.searchMovieByName(text.toString())
+            }
         }
     }
 

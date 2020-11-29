@@ -57,4 +57,13 @@ class MoviesListViewModel @Inject constructor(private val repository: SwvlReposi
             }
         }
     }
+
+    fun searchMovieByName(name: String) {
+        viewModelScope.launch {
+            repository.getAllMoviesWithName(name).collect {
+                _moviesList.postValue(it)
+                _uiState.postValue(if (it.isEmpty()) EmptyState else ContentState)
+            }
+        }
+    }
 }

@@ -39,4 +39,11 @@ interface MoviesDao {
      */
     @Query("SELECT * FROM ${MovieModel.TABLE_NAME}")
     fun getAllMovies(): Flow<List<MovieModel>>
+
+    /**
+     * Fetches all the movies with the passed [title] ordered by year with descending rating sort
+     * @return movies list
+     */
+    @Query("SELECT * FROM ${MovieModel.TABLE_NAME} WHERE title LIKE '%' || :title || '%' ORDER BY year DESC, rating DESC")
+    fun getMoviesByName(title: String): List<MovieModel>
 }

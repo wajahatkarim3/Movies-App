@@ -38,6 +38,19 @@ class SwvlRepository @Inject constructor(
         }
     }
 
+    fun getAllMoviesWithName(name: String): Flow<List<MovieModel>> = flow {
+        emit(moviesDao.getMoviesByName(name)
+                .groupBy { it.year }
+                .flatMap {
+                    var tempList = it.value.toMutableList()
+                    if (tempList.size > 5) {
+                        tempList = tempList.subList(0, 5)
+                    }
+                    tempList
+                })
+    }.flowOn(Dispatchers.IO)
+
+
     fun getAllMoviesFromDatabase(): Flow<List<MovieModel>> = moviesDao.getAllMovies().flowOn(Dispatchers.IO)
 
     fun areMoviesInDatabase(): Boolean {
