@@ -45,6 +45,10 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                return true
+            }
             R.id.action_day_night_mode -> {
                 // Get new mode.
                 val mode =
@@ -61,7 +65,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
                 true
             }
 
-            else -> true
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
