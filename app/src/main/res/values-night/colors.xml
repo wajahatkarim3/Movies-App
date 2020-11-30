@@ -12,4 +12,6 @@
     <color name="color_text_title">#C3C3C3</color>
     <color name="color_text_subtitle">#BDBDBD</color>
     <color name="color_card_background">#242424</color>
+    <color name="color_search_box">#242424</color>
+    <color name="color_search_textbox">#676767</color>
 </resources>

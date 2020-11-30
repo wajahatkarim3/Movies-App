@@ -3,6 +3,7 @@ package com.wajahatkarim.movies.swvl.utils
 import android.view.View
 import java.io.IOException
 import java.io.InputStream
+import java.util.*
 
 /**
  * Reads any InputStream and returns it in String.
@@ -25,4 +26,13 @@ fun View.visible() {
 
 fun View.gone() {
     visibility = View.GONE
+}
+
+/**
+ * Returns [Boolean] based on current time.
+ * Returns true if hours are between 06:00 pm - 07:00 am
+ */
+fun isNight(): Boolean {
+    val currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+    return (currentHour <= 7 || currentHour >= 18)
 }

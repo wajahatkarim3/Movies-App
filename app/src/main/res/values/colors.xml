@@ -15,4 +15,6 @@
     <color name="color_text_title">#2B2B2B</color>
     <color name="color_text_subtitle">#5E5E5E</color>
     <color name="color_card_background">#FFF</color>
+    <color name="color_search_box">#3561FD</color>
+    <color name="color_search_textbox">#0F35BA</color>
 </resources>
