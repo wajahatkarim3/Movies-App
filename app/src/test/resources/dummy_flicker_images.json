@@ -1,0 +1,44 @@
+{
+  "photos": {
+    "page": 1,
+    "pages": 5250,
+    "perpage": 30,
+    "total": "157484",
+    "photo": [
+      {
+        "id": "50663569263",
+        "owner": "12741965@N00",
+        "secret": "e29952dbb8",
+        "server": "65535",
+        "farm": 66,
+        "title": "Dormition Cathedral, Kyiv II",
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0
+      },
+      {
+        "id": "50663977672",
+        "owner": "151111185@N04",
+        "secret": "fae57c9945",
+        "server": "65535",
+        "farm": 66,
+        "title": "Working South Barre",
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0
+      },
+      {
+        "id": "50661218287",
+        "owner": "186539014@N02",
+        "secret": "b33fe2d394",
+        "server": "0",
+        "farm": 0,
+        "title": "Ishan Varun",
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0
+      }
+    ]
+  },
+  "stat": "ok"
+}
