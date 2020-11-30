@@ -2,6 +2,8 @@
 
 A simple demonstration of Android MVVM architecture with the latest libraries and tech stack.
 
+![Test](https://github.com/wajahatkarim3/Movies-App/workflows/Test/badge.svg)
+
 <div align="center">
   <sub>Built with ❤︎ by
   <a href="https://twitter.com/WajahatKarim">Wajahat Karim</a>
