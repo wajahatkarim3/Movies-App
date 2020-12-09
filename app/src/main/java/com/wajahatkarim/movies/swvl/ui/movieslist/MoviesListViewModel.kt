@@ -11,6 +11,7 @@ import com.wajahatkarim.movies.swvl.utils.readAsString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.InputStream
 import javax.inject.Inject
 
@@ -51,7 +52,9 @@ class MoviesListViewModel @Inject constructor(private val repository: SwvlReposi
             var moviesStr = inputStream.readAsString()
             if (moviesStr != null) {
                 repository.saveAssetMoviesInDatabase(moviesStr)
-                loadMovies()
+                withContext(Dispatchers.Main) {
+                    loadMovies()
+                }
             } else {
                 _uiState.postValue(ErrorState("Couldn't read Assets"))
             }

@@ -30,8 +30,8 @@ abstract class BaseActivity<VM : ViewModel> : AppCompatActivity() {
             // Open RoomExplorer to view Room databases inside app when Volume Down key is pressed.
             // This is opened only in debug builds
             RoomExplorer.show(this, SwvlDatabase::class.java, SwvlDatabase.DB_NAME)
-            return super.onKeyDown(keyCode, event)
+
         }
-        return true
+        return super.onKeyDown(keyCode, event)
     }
 }
