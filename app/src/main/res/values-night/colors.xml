@@ -14,4 +14,5 @@
     <color name="color_card_background">#242424</color>
     <color name="color_search_box">#242424</color>
     <color name="color_search_textbox">#676767</color>
+    <color name="color_new">#5D79D5</color>
 </resources>

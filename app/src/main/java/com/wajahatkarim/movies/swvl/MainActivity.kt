@@ -23,6 +23,8 @@ class MainActivity : BaseActivity<MainViewModel>() {
         setContentView(bi.root)
 
         setupViews()
+        // Some Change
+        // Some change
     }
 
     fun setupViews() {

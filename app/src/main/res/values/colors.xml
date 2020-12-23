@@ -17,4 +17,5 @@
     <color name="color_card_background">#FFF</color>
     <color name="color_search_box">#3561FD</color>
     <color name="color_search_textbox">#0F35BA</color>
+    <color name="color_new">#001149</color>
 </resources>
